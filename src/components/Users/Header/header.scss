@@ -1,0 +1,129 @@
+.header {
+    padding: 15px 0px;
+    position: relative;
+    background: linear-gradient(to right, #7A7FBA, #11C37C);
+}
+
+.header .header__logo img {
+    position: absolute;
+    top: -15px;
+    z-index: 5;
+}
+
+.header .header__nav {
+  
+    overflow: hidden;
+}
+
+.header .header__nav ul li {
+    display: inline-block;
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+.header .header__nav ul li a {
+    text-transform: uppercase;
+    display: block;
+    padding: 0px 15px;
+}
+
+.header .header__nav ul li:first-child a {
+    padding-left: 20px;
+}
+
+.header .header__nav ul li:last-child p {
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.header .header__nav ul li:last-child {
+    transform: translateY(5px);
+    -webkit-transform: translateY(5px);
+    -moz-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    -o-transform: translateY(5px);
+}
+.header .form-search{
+    position: absolute;
+    right: 26%;
+    z-index: 10;
+    transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    -moz-transition: all 0.4s linear;
+    -ms-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+}
+.header .form-search.toggle{
+    display: none;
+}
+.header .form-search input{
+    border: 1px solid rgba(51, 51, 51, 0.514);
+    padding: 10px;
+}
+.header .form-search button{
+    padding: 11px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+#toggle-menu {
+    display: none;
+}
+
+.show-mobile {
+    display: none;
+}
+
+/* .header .header__hotline{
+
+} */
+
+.header .header__hotline span,
+.contact-box--form .contact-box--form__hotline span,
+.box__right .contact-box--form--button-wrap .contact-box--form__hotline span {
+    display: block;
+}
+
+.header .header__hotline span:first-child,
+.contact-box--form .contact-box--form__hotline span:first-child,
+.box__right .contact-box--form--button-wrap .contact-box--form__hotline span:first-child {
+    color: #767676;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.header .header__hotline span:last-child,
+.contact-box--form .contact-box--form__hotline span:last-child,
+.box__right .contact-box--form--button-wrap .contact-box--form__hotline span:last-child {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-family: "Lato Bold", sans-serif;
+}
+
+.header .header__hotline::before,
+.contact-box--form .contact-box--form__hotline::before,
+.box__right .contact-box--form--button-wrap .contact-box--form__hotline::before {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 40px;
+    float: left;
+    background: url('../../../assets/images/phone-icon.png') no-repeat;
+    background-size: 35px 40px;
+    margin-right: 12px;
+}
+.header .cart-box{
+    font-size: 17px;
+    padding-top: 5px;
+}
+.header .cart-box a {
+    display: inline-block;
+    margin-right: 10px;
+}
+/*Header - End*/

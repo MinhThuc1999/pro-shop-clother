@@ -1,0 +1,24 @@
+.header__hotline span{
+    display: block;
+
+}
+.header__hotline span:first-child{
+
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.header__hotline span:last-child{
+    font-size: 20px;
+    font-family: "Lato Bold", sans-serif;
+}
+ .header__hotline::before{
+    content: '';
+    display: block;
+    width: 35px;
+    height: 40px;
+    float: left;
+    background: url('../../../assets/images/phone-icon.png') no-repeat;
+    background-size: 35px 40px;
+    margin-right: 12px;
+ }

@@ -1,0 +1,29 @@
+.sliderCarousel{
+    position: relative;
+    height: 600px;
+    text-align: center;
+    background-color: beige;
+    padding-top: 5rem;
+}
+.sliderCarousel .sliderItem{
+    width: 70% !important;
+    height: 60%;
+    text-align: -webkit-center;
+}       
+
+.sliderCarousel .sliderItem img{
+    background-size: contain;
+   max-width: 800px;
+   height: 400px;
+}
+.sliderCarousel .ant-carousel .slick-dots-bottom{
+    bottom: 15%;
+}
+.sliderCarousel .ant-carousel .slick-dots li button{
+    height: 7px !important;
+}
+.sliderTile{
+    font-size: 25px;
+    font-family: 'Libre Bodoni', serif;
+
+}
