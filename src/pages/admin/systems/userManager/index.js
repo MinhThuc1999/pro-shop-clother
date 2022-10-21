@@ -18,6 +18,7 @@ import ModelEditUser from "../../components/ModelEditUser";
 function UserManager() {
   const [users, setUsers] = React.useState([]);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isModelAdd, setIsModelAdd] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState([]);
   const [idCurrent, setIdCurrent] = React.useState();
   const dispatch = useDispatch();
@@ -70,6 +71,9 @@ function UserManager() {
   const handleHideModelUser = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const handHideModelAdd = () => {
+    setIsModelAdd(!isModelAdd);
+  };
   return (
     <div className="user-container">
       <h1 style={{ textAlign: "center" }}>ALL USER</h1>
@@ -77,16 +81,18 @@ function UserManager() {
         style={{ marginBottom: "20px" }}
         type="primary"
         onClick={() => {
-          setIsModalOpen(!isModalOpen);
+          setIsModelAdd(!isModelAdd);
         }}
       >
         NEW USER
       </Button>
+
       <ModelUser
-        isModalOpen={isModalOpen}
-        toggleHandleModel={handleHideModelUser}
+        modelAdd={isModelAdd}
+        toggle={handHideModelAdd}
         createUser={createUser}
       />
+
       {isModalOpen && (
         <ModelEditUser
           toggleHandleModel={handleHideModelUser}

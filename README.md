@@ -6,7 +6,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### . Run Backend
+
+```
+$ click src-> api open terminal
+$ npm install
+$ npm start
+
+
+
+### 5. Run Frontend
+
+```
+
+# open new terminal
+
+$ right click project (CLOTHER-SHOP)
+$ npm install
+$ npm start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

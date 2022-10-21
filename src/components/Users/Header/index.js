@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Badge, Col, Row } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
@@ -21,6 +21,7 @@ function HeaderClient() {
   const history = createBrowserHistory();
 
   const user = useSelector((state) => state.user.currentUser);
+  const quantity = useSelector((state) => state.cart.quantity);
   const handleLogout = () => {
     try {
       persistor.purge();
@@ -91,7 +92,9 @@ function HeaderClient() {
               <div className="cart-box">
                 {user && user.isAdmin ? null : (
                   <Link to="/cart">
-                    <AiOutlineShoppingCart /> Giỏ Hàng
+                    <Badge count={quantity} size={"default"}>
+                      <AiOutlineShoppingCart size={19} />
+                    </Badge>
                   </Link>
                 )}
                 {user && user.isAdmin ? (

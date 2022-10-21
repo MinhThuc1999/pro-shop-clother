@@ -95,8 +95,7 @@ function Footer() {
             <Row>
               <Col span={12}>
                 <p>
-                  Copyright © 2022 - Pro Ecommerce | build by -
-                  {"minhthuc1999qn@gmail"}
+                  Copyright © 2022 - Pro Ecommerce | build by -{"pro-shop.com"}
                 </p>
               </Col>
               <Col span={5} offset={7}>

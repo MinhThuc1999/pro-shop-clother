@@ -1,0 +1,29 @@
+.cart-container{
+    margin: 5% 0;
+    padding: 1% 3%;
+    font-size: 16px;
+    .cart-item{
+        border-bottom: 1px solid rgba(51, 51, 51, 0.596);
+        margin-top: 30px;
+    }
+}
+
+
+.checkout{
+    background-color: #EDF0F0;
+    height: 100vh;
+    padding: 5% 3%;
+    .checkout-block{
+        background-color: #fff;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        line-height: 3;
+        padding: 2% 4%;
+        button{
+            width: 100%;
+        }
+}
+}

@@ -71,7 +71,7 @@ router.get("/api/mine", verifyToken, async (req, res) => {
 });
 router.get("/api/orders", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().populate("user");
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json(err);

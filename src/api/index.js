@@ -7,6 +7,7 @@ const product = require("./routes/product.route");
 const order = require("./routes/order.route");
 const cart = require("./routes/cart.router");
 const uploadRouter = require("./routes/upload.router");
+const stripeRouter = require("./routes/stripe.route");
 const app = express();
 
 app.use(cors({ origin: "*" }));
@@ -30,4 +31,5 @@ app.use("/", product);
 app.use("/", order);
 app.use("/", cart);
 app.use("/", uploadRouter);
+app.use("/", stripeRouter);
 app.listen(3001, () => console.log("connect succes on port 3001"));

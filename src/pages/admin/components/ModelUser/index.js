@@ -3,7 +3,7 @@ import "./modelUser.scss";
 import { Modal } from "antd";
 import { Button, Form, Input, InputNumber, Radio } from "antd";
 
-function ModelUser({ isModalOpen, toggleHandleModel, createUser }) {
+function ModelUser({ modelAdd, toggle, createUser }) {
   const layout = {
     labelCol: {
       span: 8,
@@ -27,12 +27,7 @@ function ModelUser({ isModalOpen, toggleHandleModel, createUser }) {
   };
   return (
     <div>
-      <Modal
-        title="Add User"
-        open={isModalOpen}
-        onOk={toggleHandleModel}
-        onCancel={toggleHandleModel}
-      >
+      <Modal title="Add User" open={modelAdd} onOk={toggle} onCancel={toggle}>
         <Form
           {...layout}
           name="nest-messages"

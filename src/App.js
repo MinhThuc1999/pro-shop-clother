@@ -24,6 +24,7 @@ import Product from "./pages/user/Products/Product";
 import ProductList from "./pages/user/Products";
 import Success from "./pages/user/Success";
 import ProductPage from "./pages/user/ProductPage";
+import CartPage from "./pages/user/Cart";
 
 function App() {
   const user = useSelector((state) =>
@@ -44,6 +45,7 @@ function App() {
             <Route path="news" element={<News />} />
             <Route path="introduct" element={<Introduct />} />
             <Route path="success" element={<Success />} />
+            <Route path="cart" element={<CartPage />} />
           </Route>
           <Route path={path.ADMIN} element={<Home />}>
             <Route path="orders" element={<OrderManager />} />

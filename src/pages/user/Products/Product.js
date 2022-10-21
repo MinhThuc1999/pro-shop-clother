@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Row, InputNumber } from "antd";
 import { AiOutlineTwitter, AiOutlineWifi } from "react-icons/ai";
 import { FaFacebookF, FaGooglePlusG, FaPinterest } from "react-icons/fa";
 import formatMoney from "../../../utils/formatMoney";
+import { addToCart } from "../../../redux/admin/cartRedux";
 import { v4 as uuidv4 } from "uuid";
 
 import { Link, useParams } from "react-router-dom";
@@ -31,8 +32,12 @@ function Product() {
     };
     getProduct();
   }, [producId]);
-
-  const addToCart = () => {};
+  const handleChangeQuantity = (value) => {
+    setQuantity(value);
+  };
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity, color, size }));
+  };
   return (
     <div className="header--box">
       <Row>
@@ -85,11 +90,23 @@ function Product() {
                 <span className="status-text">hết hàng</span>
               )}
             </div>
+            <div style={{ marginBottom: "10px" }}>
+              <InputNumber
+                min={1}
+                max={10}
+                defaultValue={1}
+                onChange={handleChangeQuantity}
+              />
+            </div>
             <div className="contact-box--form--button-wrap">
               <Row>
                 <Col span={10}>
                   {product.inStock ? (
-                    <Button type="primary" size="large" onClick={addToCart}>
+                    <Button
+                      type="primary"
+                      size="large"
+                      onClick={handleAddToCart}
+                    >
                       Đặt hàng
                     </Button>
                   ) : (
