@@ -34,6 +34,7 @@ const userSlice = createSlice({
     addUserSuccess: (state, action) => {
       state.isFetching = false;
       state.users.push(action.payload);
+      state.success = true;
     },
     addUserFailure: (state) => {
       state.isFetching = false;

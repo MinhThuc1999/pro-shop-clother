@@ -4,10 +4,13 @@ import { useDispatch } from "react-redux";
 import { getOrders } from "../../../../redux/admin/apiCall";
 import { userRequest } from "../../../../redux/slice/requestMethods";
 import formatMoney from "../../../../utils/formatMoney";
+import ModelDetailOrder from "../../components/ModelOrder/ModelDetailOrder";
 import "./orderManager.scss";
 function OrderManager() {
   const dispatch = useDispatch();
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isModal, setIsModalOpen] = React.useState(false);
+  const [isModalDetail, setIsModalDetail] = React.useState(false);
+
   const [orders, setOrders] = React.useState([]);
   const [currentOrder, setCurrentOrder] = React.useState([]);
 
@@ -29,8 +32,21 @@ function OrderManager() {
 
   const handleUpdate = () => {};
   const handleDelete = () => {};
+  const handleDetail = (data) => {
+    setIsModalDetail(!isModalDetail);
+    setCurrentOrder(data);
+  };
+  const handleHideModelDetail = () => {
+    setIsModalDetail(!isModalDetail);
+  };
   return (
     <div>
+      {isModalDetail && (
+        <ModelDetailOrder
+          toggleHideDetail={handleHideModelDetail}
+          currentOrder={currentOrder}
+        />
+      )}
       <table id="customers">
         <thead>
           <tr>
@@ -82,7 +98,7 @@ function OrderManager() {
                     type="text"
                     danger
                     onClick={() => {
-                      handleDelete(order._id);
+                      handleDetail(order);
                     }}
                   >
                     Detail

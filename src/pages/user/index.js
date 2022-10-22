@@ -8,7 +8,6 @@ import { BackTop } from "antd";
 
 import "./styleClient.scss";
 import ProductList from "./Products";
-import Product from "./Products/Product";
 import Categories from "./Category";
 function HomeClient() {
   const location = useLocation();

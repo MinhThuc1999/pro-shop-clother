@@ -24,7 +24,7 @@ function Success() {
             name: item.name,
             qty: item.quantity,
             image: item.image,
-            price: item.price,
+            price: item.price * item.quantity,
             product: item._id,
           })),
           paymentMethod: paymentMethod,

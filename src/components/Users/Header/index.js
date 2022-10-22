@@ -5,6 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import { AiOutlineShoppingCart, AiOutlineLogin } from "react-icons/ai";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { Dropdown, Menu, Space } from "antd";
+import { GiArchiveRegister } from "react-icons/gi";
 
 import { publicRoutes } from "../../../constants/headerRoutes";
 import PhoneContact from "../PhoneContact";
@@ -113,11 +114,18 @@ function HeaderClient() {
                     </span>
                   </div>
                 ) : (
-                  <Link to="/login">
-                    <p>
-                      <AiOutlineLogin /> Đăng nhập
-                    </p>
-                  </Link>
+                  <div>
+                    <Link to="/login">
+                      <p>
+                        <AiOutlineLogin /> Đăng nhập
+                      </p>
+                    </Link>
+                    <Link to="/register">
+                      <p>
+                        <GiArchiveRegister /> Đăng kí
+                      </p>
+                    </Link>
+                  </div>
                 )}
               </div>
             </Col>

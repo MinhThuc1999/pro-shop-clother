@@ -69,7 +69,7 @@ export const getProducts = async (dispatch) => {
 export const getOrders = async (dispatch) => {
   dispatch(getOrderStart());
   try {
-    const res = await publicRequest.get("/api/orders");
+    const res = await userRequest.get("/api/orders");
     dispatch(getOrderSuccess(res.data));
   } catch (err) {
     dispatch(getOrderFailure());
@@ -100,8 +100,6 @@ export const addUsers = async (user, dispatch) => {
   try {
     const res = await publicRequest.post(`/api/register`, user);
     dispatch(addUserSuccess(res.data));
-
-    window.location.reload(false);
   } catch (err) {
     dispatch(addUserFailure());
   }

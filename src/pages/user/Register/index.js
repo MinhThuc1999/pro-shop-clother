@@ -1,50 +1,51 @@
+import React, { useEffect } from "react";
+
 import { Col, Row } from "antd";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/admin/apiCall";
+import { addUsers, login } from "../../../redux/admin/apiCall";
 import { createBrowserHistory } from "history";
-import { message } from "antd";
 
 import { BsFacebook } from "react-icons/bs";
 import { AiFillTwitterCircle, AiFillGooglePlusCircle } from "react-icons/ai";
 import * as Yup from "yup";
-import React, { useEffect } from "react";
-import "./styleLogin.scss";
-const SignupSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(2, "at least 2 characters!")
-    .max(50, "no more than 50 characters")
-    .required("Required!!!"),
-  password: Yup.string()
-    .min(2, "at least 2 characters!")
-    .max(50, "no more than 50 characters")
-    .required("Required!!!"),
-});
-function Login() {
+import "./register.scss";
+function Register() {
+  const SignupSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(2, "at least 2 characters!")
+      .max(50, "no more than 50 characters")
+      .required("Required!!!"),
+    password: Yup.string()
+      .min(2, "at least 2 characters!")
+      .max(50, "no more than 50 characters")
+      .required("Required!!!"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+  });
+  const navigate = useNavigate();
+
   const error = useSelector((state) => state.user.error);
 
   const dispatch = useDispatch();
   const history = createBrowserHistory();
 
   const success = useSelector((state) => state.user.success);
-  /* useEffect(() => {
+  /*useEffect(() => {
     if (success) {
       history.push("/");
       window.location.reload(false);
     }
   }, [success]);*/
-  const handleLogin = async (data) => {
+  const handleRegister = async (values) => {
     try {
-      await login(dispatch, {
-        username: data.username,
-        password: data.password,
-      });
+      await addUsers(values, dispatch);
       if (success) {
-        history.push("/");
-        window.location.reload(false);
+        navigate("/login");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="login-background">
@@ -52,18 +53,20 @@ function Login() {
         <div className="login-content">
           <Row>
             <Col span={24} className="text-center title">
-              <p>Login</p>
+              <p>Register</p>
             </Col>
             <Col span={24} className="form-group">
               <Formik
                 initialValues={{
                   username: "",
                   password: "",
+                  email: "",
+                  address: "",
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={(values) => {
+                  handleRegister(values);
                   // same shape as initial values
-                  handleLogin(values);
                 }}
               >
                 <Form>
@@ -91,43 +94,30 @@ function Login() {
                   <p style={{ color: "red" }}>
                     <ErrorMessage name="password" />
                   </p>
-
-                  <button className="btn-button" type="submit">
-                    Login
-                  </button>
-                  {error && (
-                    <span
-                      style={{
-                        marginTop: "10px",
-                        color: "red",
-                        display: "block",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      invalid email or password
-                    </span>
-                  )}
-
-                  <p>
-                    <Link style={{ fontSize: "16px" }} to={""}>
-                      Forgot your password?
-                    </Link>
+                  <p className="fiel_input">
+                    <label htmlFor="email">Email:</label>
+                    <Field
+                      className="form-control"
+                      name="email"
+                      type="text"
+                      placeholder="enter email"
+                    />
                   </p>
-                  <div className="network">
-                    <p>Or sign in with:</p>
-                    <p>
-                      <span style={{ color: "#283AD2", marginRight: "10px" }}>
-                        <BsFacebook size={30} />
-                      </span>
-                      <span style={{ color: "#28C8D2", marginRight: "10px" }}>
-                        <AiFillTwitterCircle size={30} />
-                      </span>
-
-                      <span style={{ color: "#E46F1E", marginRight: "10px" }}>
-                        <AiFillGooglePlusCircle size={30} />
-                      </span>
-                    </p>
-                  </div>
+                  <p style={{ color: "red" }}>
+                    <ErrorMessage name="email" />
+                  </p>
+                  <p className="fiel_input">
+                    <label htmlFor="address">Address:</label>
+                    <Field
+                      className="form-control"
+                      name="address"
+                      type="text"
+                      placeholder="enter address"
+                    />
+                  </p>
+                  <button className="btn-button" type="submit">
+                    register
+                  </button>
                 </Form>
               </Formik>
             </Col>
@@ -138,4 +128,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

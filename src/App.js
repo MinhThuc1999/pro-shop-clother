@@ -25,6 +25,7 @@ import ProductList from "./pages/user/Products";
 import Success from "./pages/user/Success";
 import ProductPage from "./pages/user/ProductPage";
 import CartPage from "./pages/user/Cart";
+import Register from "./pages/user/Register";
 
 function App() {
   const user = useSelector((state) =>
@@ -60,6 +61,7 @@ function App() {
               admin ? <Navigate to={"/admin"} /> : <Navigate to={"/login"} />
             }
           />*/}
+          <Route path="/register" element={<Register />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route
             path="*"

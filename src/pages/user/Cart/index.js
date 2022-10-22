@@ -18,6 +18,7 @@ function CartPage() {
 
   const cart = useSelector((state) => state.cart);
   console.log(cart.products);
+
   const quantity = useSelector((state) => state.cart.quantity);
   const [stripeToken, setStripeToken] = React.useState(null);
   const onToken = (token) => {
@@ -30,7 +31,6 @@ function CartPage() {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        console.log(res.data);
         history.push("/success", {
           stripeData: res.data,
           products: cart,
@@ -43,16 +43,6 @@ function CartPage() {
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history]);
 
-  {
-    /*const handleRemoveCart = (id) => {
-    try {
-      console.log(id);
-      // dispatch(removeToCart(id));
-    } catch (error) {
-      console.log(error);
-    }
-  };*/
-  }
   return (
     <div className="cart-container">
       <Row>
